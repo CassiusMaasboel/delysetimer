@@ -1,0 +1,148 @@
+.album-wrapper,
+.vinyl-section,
+.album-cover,
+.vinyl {
+    will-change: transform;
+}
+
+
+:root {
+    --vinyl-x: 130px;
+    --album-cover-x: -130px;
+}
+
+.vinyl-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    min-height: 0vh; /* Tilpasning til kun at dække det nødvendige område */
+    background: linear-gradient(to bottom, rgb(250, 243, 214), rgb(255, 197, 60));
+    background-size: 100% 300%; /* Stræk gradienten for at dække hele sektionens højde */
+    background-position: 0 0; /* Start ved toppen */
+    overflow: hidden;
+}
+
+.album-wrapper {
+    position: relative;
+    height: 100vh; /* Fylder hele viewportens højde */
+    width: 100%;
+}
+
+.album-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.album-container .album-cover,
+.album-container .vinyl {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.album-cover {
+    z-index: 10;
+}
+
+.album-container img {
+    width: 1000px;
+    height: auto;
+}
+
+#spotify-text {
+    position: absolute;
+    bottom: 19%;
+    right: 16%;
+    transform: translate(50%, 50%);
+    z-index: 15;
+}
+
+#spotify-text i {
+    color: #fff;
+    font-size: 47px;
+    transition: all 0.5s;
+}
+
+#spotify-text i:hover {
+    transform: scale(1.2);
+}
+
+#typewriter-date {
+    position: absolute;
+    bottom: 44%;
+    left: -10%;
+    transform: rotate(-90deg);
+    z-index: 15;
+    color: #fff;
+    font-size: 47px;
+    font-family: "p22-typewriter", sans-serif;
+}
+
+/* Små laptops og store tablets (mindre computer) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    :root {
+        --vinyl-x: 80px;
+        --album-cover-x: -80px;
+    }
+
+    .album-container img {
+        width: 600px;
+    }
+    
+    #spotify-text i {
+        font-size: 30px;
+    }
+
+    #typewriter-date {
+        font-size: 30px;
+    }
+}
+
+/* Tablets */
+@media (min-width: 481px) and (max-width: 767px) {
+    :root {
+        --vinyl-x: 40px;
+        --album-cover-x: -40px;
+    }
+
+    .album-container img {
+        width: 450px;
+    }
+    
+    #spotify-text i {
+        font-size: 25px;
+    }
+
+    #typewriter-date {
+        font-size: 24px;
+    }
+}
+
+/* Mobil */
+@media (max-width: 480px) {
+    :root {
+        --vinyl-x: 40px;
+        --album-cover-x: -40px;
+    }
+
+    .album-container img {
+        width: 300px;
+    }
+    
+    #spotify-text i {
+        font-size: 20px;
+    }
+
+    #typewriter-date {
+        font-size: 14px;
+    }
+}

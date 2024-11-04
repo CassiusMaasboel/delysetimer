@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: black;
+}
+
+#forside {
+    position: relative;
+    min-height: 100vh;
+    background: url("../images/forside.jpg") no-repeat center center / cover;
+    background-attachment: fixed;
+    background-position: center 0;
+}
+
+#forside .logo {
+    position: absolute;
+    top: 120%;
+    left: 0%;
+    transform: translate(-10%, -110%);
+    text-align: center;
+    z-index: 10;
+}
+
+#forside .logo img {
+    width: 500px;
+    height: auto;
+    display: block;
+}
+
+/* Små laptops og store tablets (mindre computer) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #forside .logo img {
+        width: 400px;
+}
+}
+
+/* Tablets */
+@media (min-width: 481px) and (max-width: 767px) {
+    #forside .logo img {
+        width: 300px;
+}
+#forside .logo {
+    top: 110%;
+    transform: translateY(-100);
+}
+#forside {
+    background-attachment: scroll;
+}
+}
+
+/* Mobil */
+@media (max-width: 480px) {
+
+    #forside .logo img {
+        width: 300px;
+
+    }
+    #forside .logo {
+        top: 75%;
+        left: 50%;
+        transform: translate(-50%, -50%);        
+    }
+
+    #forside {
+        background: url("../images/forside-mobil.jpg") no-repeat center center / cover;
+        background-attachment: scroll;
+        z-index: 10;
+    }
+}
