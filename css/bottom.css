@@ -250,4 +250,8 @@
         max-width: 270px;
         bottom: 20%;
     }
+
+    .yt-slider:hover {
+        animation-play-state: running !important; /* Sørg for, at animationen ikke stopper */
+    }
 }

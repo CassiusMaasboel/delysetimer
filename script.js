@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Video play button functionality
 document.addEventListener("DOMContentLoaded", function() {
     const listenNowBtn = document.getElementById("listenNowBtn");
     if (listenNowBtn) {
@@ -64,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (tigerSection) {
                 tigerSection.style.backgroundColor = "black";
                 tigerSection.style.backgroundImage = "none"; // Fjern baggrundsbilledet
+                tigerSection.style.overflowY = "auto"; // Tillader scrolling i sektionen
             }
 
             // Indsætter YouTube-video i videoContainer
@@ -87,9 +87,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 video.style.height = "100%";
                 video.style.zIndex = "5";
             }
+
+            // Sørg for, at scrolling stadig fungerer
+            document.body.style.overflow = "auto";
         });
     }
 });
+
 
 
 document.addEventListener("DOMContentLoaded", function () {

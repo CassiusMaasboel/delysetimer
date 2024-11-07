@@ -61,8 +61,8 @@ body {
 
     }
     #forside .logo {
-        top: 75%;
-        left: 50%;
+        top: 60%;
+        left: 30%;
         transform: translate(-50%, -50%);        
     }
 
