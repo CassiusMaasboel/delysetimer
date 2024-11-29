@@ -111,9 +111,10 @@
     }
 
     iframe {
-        pointer-events: auto; /* Tillad interaktion */
-        touch-action: manipulation; /* Sørger for, at brugeren kan interagere med iframe */
-    }
+    pointer-events: none; /* Forhindre interaktion som standard */
+    touch-action: manipulation; /* Tillad scrolling og touch-håndtering */
+}
+
 
     #tiger {
         overflow-y: auto; /* Tillad lodret scrolling */
