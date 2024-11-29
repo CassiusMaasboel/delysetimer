@@ -110,13 +110,17 @@
         font-size: 40px;
     }
 
-    #tiger {
-        background-attachment: scroll; /* Sørger for normal scrolling */
-        overflow-y: auto; /* Sørger for, at sektionen kan scrolle lodret */
+    iframe {
+        pointer-events: auto; /* Tillad interaktion */
+        touch-action: manipulation; /* Sørger for, at brugeren kan interagere med iframe */
     }
 
-    iframe {
-        pointer-events: auto; /* Tillader interaktion med iframe */
+    #tiger {
+        overflow-y: auto; /* Tillad lodret scrolling */
+    }
+
+    body {
+        overflow-y: auto; /* Sørger for, at hele siden kan scrolle */
     }
 
 }

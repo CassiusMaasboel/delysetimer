@@ -58,75 +58,54 @@
 /* Slider-container styling */
 
 .yt-slider-container {
-    position: absolute; /* Gør det muligt at placere i bunden */
-    bottom: 40px; /* Placer tættere på bunden */
-    width: 100%; /* Fyld hele bredden */
-    max-width: 500px; /* Juster bredden, hvis ønsket */
-    margin: 0 auto; /* Centrer slideren horisontalt */
-    left: 50%; /* Centrer horisontalt */
-    transform: translateX(-150%); /* Justér for præcis centreret placering */
+    position: absolute;
+    bottom: 80px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .yt-slider {
     display: flex;
-    animation: slide 100s linear infinite; /* Kontinuerlig scroll */
-    transition: all 0.5s;
-    gap: 11px;
+    animation: slide 100s linear infinite; /* Automatisk glidende scroll */
+    gap: 15px;
+    transition: animation-play-state 0.3s ease, transform 0.3s ease;
 }
 
 .yt-slider:hover {
-    animation-play-state: paused; /* Pause ved hover */
+    transform: scale(1.05); /* Skaler slideren */
+    animation-play-state: paused; /* Stop animation ved hover */
 }
 
-/* Animation for kontinuerlig scroll */
+/* Animation for automatisk scroll */
 @keyframes slide {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-1000%); } /* Scroll gennem alle slides */
+    100% { transform: translateX(-100%); }
 }
 
-/* Stil hvert slide */
 /* Stil hvert slide */
 .yt-slide {
+    flex: 0 0 auto;
+    width: 500px;
+    height: auto;
+    overflow: hidden;
     position: relative;
-    min-width: 100%; /* Fylder hele bredden */
-    height: 33vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: z-index 2s ease-out; /* Forsinkelse for z-index */
-}
-
-.yt-slide::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 10; /* Base z-index */
-}
-
-.yt-slide:hover::after {
-    z-index: -1; /* Flytter pseudo-element bagved på hover */
+    transition: transform 0.5s ease, z-index 0.3s ease;
 }
 
 .yt-slide:hover {
-    z-index: 20; /* Billedet vises foran de andre */
+    transform: scale(1.06); /* Skaler individuelle slides ved hover */
+    z-index: 10; /* Sørg for, at det hovered slide står frem */
 }
 
-/* Stil for billede */
 .yt-slide img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
-    transition: transform 0.5s ease; /* Smooth transition for skalering */
 }
-
-/* Skalering af billede ved hover */
-.yt-slide:hover img {
-    transform: scale(1.05); /* Kun billedet skaleres ved hover */
-}
-
 
 /* Play icon styling */
 .yt-play-icon {
@@ -135,123 +114,55 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 50px;
-    color: #ffffff;
-    opacity: 0.8;
+    color: rgba(255, 255, 255, 0.8); /* Standard farve med lav opacitet */
     pointer-events: none;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    z-index: 100;
+    transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 /* Effekt på play-ikon ved hover */
 .yt-slide:hover .yt-play-icon {
-    transform: translate(-50%, -50%) scale(1.2);
-    opacity: 1;
+    color: #ffffff; /* Helt hvid farve */
+    opacity: 1; /* Fuld opacitet */
 }
 
-/* Responsiv styling */
-@media (min-width: 768px) and (max-width: 1023px) {
-    .yt-dot {
-        width: 10px;
-        height: 10px;
-    }
-
-    .yt-arrow {
-        font-size: 30px;
-    }
-
-    .yt-play-icon {
-        font-size: 40px;  
+/* Responsiv styling for mobil */
+@media (max-width: 768px) {
+    #bottom-section {
+        min-height: 70vh;
     }
 
     .yt-slider-container {
-        bottom: 40px;
-        max-width: 400px;
+        overflow-x: auto; /* Aktivér horisontal scrolling */
+        scrollbar-width: none; /* Skjul scrollbar for Firefox */
+        max-width: 100%;
     }
 
-    .social-icon {
-        font-size: 45px;
+    .yt-slider-container::-webkit-scrollbar {
+        display: none; /* Skjul scrollbar for Chrome/Safari */
     }
 
-    .social-icons {
-        top: 32%;
-    }
-
-    #typewriter {
-        font-size: 50px;
-    }
-}
-
-@media (min-width: 481px) and (max-width: 767px) {
-    .yt-dot {
-        width: 10px;
-        height: 10px;
-    }
-
-    .yt-arrow {
-        font-size: 40px;
-    }
-
-    .yt-play-icon {
-        font-size: 40px;  
-    }
-
-    .yt-slider-container {
-        bottom: 40px;
-        max-width: 350px;
-    }
-
-    .social-icon {
-        font-size: 40px;
-    }
-
-    .social-icons {
-        top: 30%;
-    }
-
-    #typewriter {
-        font-size: 40px;
+    .yt-slider {
+        animation: none; /* Fjern automatisk animation */
+        gap: 0;
+        width: max-content; /* Sørger for, at indholdet kan scrolle */
     }
 
     .yt-slide {
-        height: 28vh;
-    }
-}
-
-@media (max-width: 480px) {
-    #bottom-section {
-        min-height: 80vh;
+        width: 300px; /* Justeret størrelse for mobil */
     }
 
-    .yt-dot {
-        display: none;
+    .yt-slide:hover {
+        transform: none; /* Skaler individuelle slides ved hover */
+        z-index: 10; /* Sørg for, at det hovered slide står frem */
     }
 
-    .yt-arrow {
-        font-size: 40px;
+    .yt-slide img {
+        object-fit: cover; /* Ensartet billedstil */
     }
-
-    .yt-play-icon {
-        font-size: 40px;  
-    }
-
-    .social-icon {
-        font-size: 35px;
-    }
-
-    .social-icons {
-        top: 27%;
-    }
-
     #typewriter {
         font-size: 30px;
     }
-
-    .yt-slider-container {
-        max-width: 270px;
-        bottom: 20%;
-    }
-
-    .yt-slider:hover {
-        animation-play-state: running !important; /* Sørg for, at animationen ikke stopper */
+    .social-icon {
+        font-size: 35px;
     }
 }

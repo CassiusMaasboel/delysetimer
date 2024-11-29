@@ -110,20 +110,20 @@
 /* Tablets */
 @media (min-width: 481px) and (max-width: 767px) {
     :root {
-        --vinyl-x: 40px;
-        --album-cover-x: -40px;
+        --vinyl-x: 70px;
+        --album-cover-x: -70px;
     }
 
     .album-container img {
-        width: 450px;
+        width: 600px;
     }
     
     #spotify-text i {
-        font-size: 25px;
+        font-size: 30px;
     }
 
     #typewriter-date {
-        font-size: 24px;
+        font-size: 28px;
     }
 }
 
