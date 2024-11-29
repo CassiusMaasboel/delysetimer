@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Tilføj iframe til videoContainer
             videoContainer.innerHTML = `
                 <iframe 
+                    id="youtubeVideo"
                     width="100%" 
                     height="100%" 
                     src="https://www.youtube.com/embed/nrXj21VjD88?autoplay=1" 
@@ -44,29 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Sørg for, at scrolling forbliver aktiveret
             body.style.overflowY = "auto";
-            videoContainer.style.overflow = "visible";
 
-            // Tilføj pointer-events til iframe for at tillade interaktion og scrolling
-            const iframe = videoContainer.querySelector("iframe");
-            iframe.style.pointerEvents = "none";
-
-            // Aktiver pointer-events ved touchstart eller mousedown
-            iframe.addEventListener("touchstart", () => {
-                iframe.style.pointerEvents = "auto";
-            });
-
-            iframe.addEventListener("mousedown", () => {
-                iframe.style.pointerEvents = "auto";
-            });
-
-            // Deaktiver pointer-events efter en kort periode uden interaktion
-            iframe.addEventListener("touchend", () => {
-                setTimeout(() => iframe.style.pointerEvents = "none", 500);
-            });
-
-            iframe.addEventListener("mouseup", () => {
-                setTimeout(() => iframe.style.pointerEvents = "none", 500);
-            });
+            // Aktivér touch-interaktion på iframe
+            const iframe = document.getElementById("youtubeVideo");
+            iframe.style.pointerEvents = "auto"; // Tillad interaktion med iframe
         });
     }
 
