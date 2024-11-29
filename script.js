@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         scrollTrigger: {
             trigger: ".vinyl-section",
             start: "top top",
-            end: "+=1500vh", // Mindre afstand for mere præcis oplevelse
+            end: "+=1500vh",
             pin: true,
             scrub: true,
         },
@@ -29,6 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (listenNowBtn) {
         listenNowBtn.addEventListener("click", () => {
             const videoContainer = document.getElementById("videoContainer");
+            const body = document.body;
+
+            // Tilføj iframe til videoContainer
             videoContainer.innerHTML = `
                 <iframe 
                     width="100%" 
@@ -38,6 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen
                 ></iframe>`;
+
+            // Sørg for, at scrolling forbliver aktiveret
+            body.style.overflowY = "auto";
+            videoContainer.style.overflow = "visible";
         });
     }
 
@@ -98,6 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
         updateSlider();
     }
 
-    // Refresh ScrollTrigger on DOMContentLoaded
+    // Sørg for, at ScrollTrigger forbliver opdateret
     ScrollTrigger.refresh();
 });
