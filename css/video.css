@@ -110,9 +110,15 @@
         font-size: 40px;
     }
 
-    iframe {
-    pointer-events: none; /* Forhindre interaktion som standard */
-    touch-action: manipulation; /* Tillad scrolling og touch-håndtering */
+iframe {
+    pointer-events: auto; /* Tillad interaktion som standard */
+    touch-action: manipulation; /* Optimer scrolling og touch */
+    z-index: 10; /* Sørg for, at iframe er klikbart */
+    display: block;
+}
+
+#videoContainer {
+    overflow: visible; /* Sørg for, at containeren ikke blokerer scrolling */
 }
 
 
