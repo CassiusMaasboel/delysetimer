@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (listenNowBtn) {
         listenNowBtn.addEventListener("click", () => {
             const videoContainer = document.getElementById("videoContainer");
-            const body = document.body;
 
             // Tilføj iframe til videoContainer
             videoContainer.innerHTML = `
@@ -43,10 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     allowfullscreen
                 ></iframe>`;
 
-            // Sørg for, at scrolling forbliver aktiveret
-            body.style.overflowY = "auto";
-
-            // Aktivér touch-interaktion på iframe
+            // Sørg for scrolling og interaktion med iframe
             const iframe = document.getElementById("youtubeVideo");
             iframe.style.pointerEvents = "auto"; // Tillad interaktion med iframe
         });
@@ -84,30 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     typewriter();
-
-    // **Slider Functionality**
-    const slider = document.querySelector(".yt-slider");
-    if (slider) {
-        const slides = Array.from(slider.children);
-        const slideCount = slides.length;
-        let currentIndex = 0;
-
-        function updateSlider() {
-            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
-
-        document.querySelector(".yt-left-arrow")?.addEventListener("click", () => {
-            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-            updateSlider();
-        });
-
-        document.querySelector(".yt-right-arrow")?.addEventListener("click", () => {
-            currentIndex = (currentIndex + 1) % slideCount;
-            updateSlider();
-        });
-
-        updateSlider();
-    }
 
     // Sørg for, at ScrollTrigger forbliver opdateret
     ScrollTrigger.refresh();
