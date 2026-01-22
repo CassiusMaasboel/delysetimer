@@ -37,6 +37,11 @@ body {
     #forside .logo img {
         width: 400px;
 }
+#forside .logo {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Flytter midten af logoet til midten af skærmen */
+    }
 }
 
 /* Tablets */

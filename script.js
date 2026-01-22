@@ -1,5 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
+// Skift fra DOMContentLoaded til window.onload
+window.addEventListener("load", () => {
     gsap.registerPlugin(ScrollTrigger);
+    
+    // Refresh ScrollTrigger en ekstra gang for at være sikker
+    ScrollTrigger.refresh();
 
     // **Album Wrapper Pinning and Scroll Animation**
     gsap.timeline({
@@ -24,22 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
         ease: "none",
     }, "<");
 
-    // **Play Video on Button Click**
-    const listenNowBtn = document.getElementById("listenNowBtn");
-    if (listenNowBtn) {
-        listenNowBtn.addEventListener("click", () => {
-            const videoContainer = document.getElementById("videoContainer");
-            videoContainer.innerHTML = `
-                <iframe 
-                    width="100%" 
-                    height="100%" 
-                    src="https://www.youtube.com/embed/nrXj21VjD88?autoplay=1" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen
-                ></iframe>`;
-        });
-    }
+// **Åbn video i nyt vindue, hvis indlejring er blokeret**
+const listenNowBtn = document.getElementById("listenNowBtn");
+if (listenNowBtn) {
+    listenNowBtn.addEventListener("click", () => {
+        // I stedet for at indsætte en iframe, sender vi brugeren til YouTube
+        window.open("https://www.youtube.com/watch?v=nrXj21VjD88", "_blank");
+    });
+}
 
     // **Typewriter Effect**
     const typewriterText = [" Like • Lyt • Følg ", " Lyt • Følg • Like ", " Følg • Like • Lyt "];
@@ -80,10 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const slides = Array.from(slider.children);
         const slideCount = slides.length;
         let currentIndex = 0;
-
-        function updateSlider() {
-            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
 
         document.querySelector(".yt-left-arrow")?.addEventListener("click", () => {
             currentIndex = (currentIndex - 1 + slideCount) % slideCount;

@@ -130,8 +130,8 @@
 /* Mobil */
 @media (max-width: 480px) {
     :root {
-        --vinyl-x: 40px;
-        --album-cover-x: -40px;
+        --vinyl-x: 30px;
+        --album-cover-x: -30px;
     }
 
     .album-container img {

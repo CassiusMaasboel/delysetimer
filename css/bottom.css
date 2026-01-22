@@ -70,9 +70,10 @@
 
 .yt-slider {
     display: flex;
-    animation: slide 100s linear infinite; /* Automatisk glidende scroll */
+    /* Animationen kører kun til -50%, fordi vi dublerer indholdet */
+    animation: slide 30s linear infinite; 
     gap: 15px;
-    transition: animation-play-state 0.3s ease, transform 0.3s ease;
+    width: max-content; /* Vigtigt: sikrer at containeren ikke klemmer billederne */
 }
 
 .yt-slider:hover {
@@ -83,7 +84,12 @@
 /* Animation for automatisk scroll */
 @keyframes slide {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Stop animation ved hover på HELE containeren eller individuelle slides */
+.yt-slider-container:hover .yt-slider {
+    animation-play-state: paused;
 }
 
 /* Stil hvert slide */
